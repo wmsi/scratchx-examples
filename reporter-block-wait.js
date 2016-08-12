@@ -18,6 +18,38 @@
         return {status: 2, msg: 'Ready'};
     };
   
+    // Function called for "latitude at %s" block
+    // The first argument is the string entered in the block's input field
+    // The last argument is the callback to be called once the wait is over
+    ext.lat_at = function(address, callback) {
+        // Make an AJAX call to the Google Maps Geocoding API to get latitude - https://developers.google.com/maps/documentation/geocoding/start
+        $.ajax({
+            url: jsonpProxy + "https://maps.googleapis.com/maps/api/geocode/json?address=" + address.replace(" ", "+") + "&key=" + apiKey,
+            dataType: 'jsonp',
+            success: function( lat_long_data ) {
+              // Parse data for latitude and return it via the callback
+              var lat = lat_long_data["results"][0]["geometry"]["location"]["lat"];
+              callback(lat);
+            }
+      });
+    }
+    
+    // Function called for "longitude at %s" block
+    // The first argument is the string entered in the block's input field
+    // The last argument is the callback to be called once the wait is over
+    ext.lng_at = function(address, callback) {
+        // Make an AJAX call to the Google Maps Geocoding API to get longitude - https://developers.google.com/maps/documentation/geocoding/start
+        $.ajax({
+            url: jsonpProxy + "https://maps.googleapis.com/maps/api/geocode/json?address=" + address.replace(" ", "+") + "&key=" + apiKey,
+            dataType: 'jsonp',
+            success: function( lat_long_data ) {
+              // Parse data for longitude and return it via the callback
+              var lng = lat_long_data["results"][0]["geometry"]["location"]["lng"];
+              callback(lng);
+            }
+      });
+    }
+  
     // Function called for "elevation at %s" block
     // The first argument is the string entered in the block's input field
     // The last argument is the callback to be called once the wait is over
@@ -57,7 +89,7 @@
     ext.elevation_at_lat_lng = function(lat, lng, callback) {
       get_elevation(lat, lng, callback);
     }
-    
+
     // Helper function to get elevation from lat/long
     // Elevation is returned by being passed as an argument to the given callback function (this is how ScratchX does it)
     get_elevation = function(lat, lng, callback) {
@@ -82,9 +114,11 @@
           ["R", "elevation (m) here", "elevation_here"],
           ["R", "elevation (m) at %s", "elevation_at", "Boston, MA"],
           ["R", "elevation (m) at %n , %n", "elevation_at_lat_lng", "42.3600825", "-71.0588801"],
+          ["R", "longitude at %s", "lat_at", "Boston, MA"],
+          ["R", "latitude at %s", "lng_at", "Boston, MA"],
         ]
     };
 
     // Register the extension
-    ScratchExtensions.register('Wait for Confirm', descriptor, ext);
+    ScratchExtensions.register('Elevation Finder', descriptor, ext);
 })({});
