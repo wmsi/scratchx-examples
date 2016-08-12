@@ -30,18 +30,17 @@
       }
     }
     
-    // Function called for the "start repeating" block
+    // Function called for the "stop repeating" block
     ext.stop_interval = function() {
       clearInterval(intervalID);
     }
     
-    // Function called for the "stop repeating" block
+    // Function called for the "start repeating" block
     ext.start_interval = function(interval) {
         clearInterval(intervalID);
         intervalID = setInterval(function() {
           activateHat = true;
         }, interval*1000);
-        console.log("started");
     }
     
     // Block and block menu descriptions
