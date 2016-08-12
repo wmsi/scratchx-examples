@@ -39,6 +39,7 @@
     
     // Function called for "elevation here" block
     // The last argument is the callback to be called once the wait is over
+    // WARNING: This is incompatible with Chrome because HTTPS is required for obtaining location...
     ext.elevation_here = function(callback) {
       // get user location (adapted from http://www.w3schools.com/html/html5_geolocation.asp)
       if (navigator.geolocation) {
