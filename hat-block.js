@@ -20,11 +20,7 @@
   
     // Function called for the "every n secs do" block
     // The first argument is the number entered in the block's input field
-    ext.every_interval = function(interval) {
-        intervalID = setInterval(function() {
-          activateHat = true;
-        }, interval*1000);
-      
+    ext.every_interval = function() {
       // Run the hat block if we've hit an interval
       if (activateHat) {
         activateHat = false;
@@ -34,20 +30,28 @@
       }
     }
     
-    // Function called for the "stop repeating" block
+    // Function called for the "start repeating" block
     ext.stop_interval = function() {
       clearInterval(intervalID);
-      intervalID = null;
+    }
+    
+    // Function called for the "stop repeating" block
+    ext.start_interval = function() {
+        clearInterval(intervalID)
+        intervalID = setInterval(function() {
+          activateHat = true;
+        }, interval*1000);
     }
     
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
-          // Block type, block name, function name, default parameter
-          // The "%n" represents a number input field in the block
-          // The fourth argument in this array is the default value in that input field
-          ["h", "every %n secs do", "every_interval", "5"],
-          [" ", "stop repeating", "stop_interval"],
+            // Block type, block name, function name, [default parameter]
+            ["h", "On repeat", "every_interval"],
+            // The "%n" represents a number input field in the block
+            // The fourth argument in this array is the default value in that input field
+            [" ", "start repeating every %n secs", "start_interval", "5"],
+            [" ", "stop repeating", "stop_interval"],
         ]
     };
 
