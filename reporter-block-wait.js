@@ -79,9 +79,9 @@
           // Block type, block name, function name, default parameter
           // The "%s" represents a string input field in the block
           // The fourth argument in this array is the default value in that input field
-          ["R", "elevation here", "elevation_here"],
-          ["R", "elevation at %s", "elevation_at", "Boston, MA"],
-          ["R", "elevation at %n , %n", "elevation_at_lat_lng", "42.3600825", "-71.0588801"],
+          ["R", "elevation (m) here", "elevation_here"],
+          ["R", "elevation (m) at %s", "elevation_at", "Boston, MA"],
+          ["R", "elevation (m) at %n , %n", "elevation_at_lat_lng", "42.3600825", "-71.0588801"],
         ]
     };
 
