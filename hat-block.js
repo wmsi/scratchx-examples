@@ -37,10 +37,11 @@
     
     // Function called for the "stop repeating" block
     ext.start_interval = function(interval) {
-        clearInterval(intervalID)
+        clearInterval(intervalID);
         intervalID = setInterval(function() {
           activateHat = true;
         }, interval*1000);
+        console.log("started");
     }
     
     // Block and block menu descriptions
