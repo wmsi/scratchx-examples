@@ -36,7 +36,7 @@
     }
     
     // Function called for the "stop repeating" block
-    ext.start_interval = function() {
+    ext.start_interval = function(interval) {
         clearInterval(intervalID)
         intervalID = setInterval(function() {
           activateHat = true;
