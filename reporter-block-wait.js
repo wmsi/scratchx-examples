@@ -50,7 +50,7 @@
     
     // Function called for "elevation here" block
     // The last argument is the callback to be called once the wait is over
-    ext.elevation_here = function(lat, lng, callback) {
+    ext.elevation_at_lat_lng = function(lat, lng, callback) {
       get_elevation(lat, lng, callback);
     }
     
