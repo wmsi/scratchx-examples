@@ -1,3 +1,7 @@
+// helloworld.js
+// An example ScratchX extension demonstrating basic command block functionality
+// Based off the ScratchX documentation: https://github.com/LLK/scratchx/wiki
+
 (function(ext) {
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
