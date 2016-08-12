@@ -1,0 +1,31 @@
+// command-block-wait.js
+// An example ScratchX extension demonstrating synchronous command block functionality
+// Based off the ScratchX documentation: https://github.com/LLK/scratchx/wiki
+
+(function(ext) {
+    // Cleanup function when the extension is unloaded
+    ext._shutdown = function() {};
+
+    // Status reporting code
+    // Use this to report missing hardware, plugin or unsupported browser
+    ext._getStatus = function() {
+        return {status: 2, msg: 'Ready'};
+    };
+  
+    // Function called for Hello World block
+    ext.wait_for_confirm = function(callback, message) {
+      confirm(message);
+      callback();
+    }
+    
+    // Block and block menu descriptions
+    var descriptor = {
+        blocks: [
+          // Block type, block name, function name
+          ["w", "Wait for confirmation %s", "wait_for_confirm", "Continue?"],
+        ]
+    };
+
+    // Register the extension
+    ScratchExtensions.register('Wait for Confirm', descriptor, ext);
+})({});
