@@ -35,5 +35,5 @@
     };
 
     // Register the extension
-    ScratchExtensions.register('Wait for Confirm', descriptor, ext);
+    ScratchExtensions.register('Title Case', descriptor, ext);
 })({});
