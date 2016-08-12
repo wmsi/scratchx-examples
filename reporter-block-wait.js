@@ -18,10 +18,10 @@
         return {status: 2, msg: 'Ready'};
     };
   
-    // Function called for "latitude at %s" block
+    // Function called for "latitude of %s" block
     // The first argument is the string entered in the block's input field
     // The last argument is the callback to be called once the wait is over
-    ext.lat_at = function(address, callback) {
+    ext.lat_of = function(address, callback) {
         // Make an AJAX call to the Google Maps Geocoding API to get latitude - https://developers.google.com/maps/documentation/geocoding/start
         $.ajax({
             url: jsonpProxy + "https://maps.googleapis.com/maps/api/geocode/json?address=" + address.replace(" ", "+") + "&key=" + apiKey,
@@ -34,10 +34,10 @@
       });
     }
     
-    // Function called for "longitude at %s" block
+    // Function called for "longitude of %s" block
     // The first argument is the string entered in the block's input field
     // The last argument is the callback to be called once the wait is over
-    ext.lng_at = function(address, callback) {
+    ext.lng_of = function(address, callback) {
         // Make an AJAX call to the Google Maps Geocoding API to get longitude - https://developers.google.com/maps/documentation/geocoding/start
         $.ajax({
             url: jsonpProxy + "https://maps.googleapis.com/maps/api/geocode/json?address=" + address.replace(" ", "+") + "&key=" + apiKey,
@@ -114,8 +114,8 @@
           ["R", "elevation (m) here", "elevation_here"],
           ["R", "elevation (m) at %s", "elevation_at", "Boston, MA"],
           ["R", "elevation (m) at %n , %n", "elevation_at_lat_lng", "42.3600825", "-71.0588801"],
-          ["R", "longitude at %s", "lat_at", "Boston, MA"],
-          ["R", "latitude at %s", "lng_at", "Boston, MA"],
+          ["R", "longitude of %s", "lat_of", "Boston, MA"],
+          ["R", "latitude of %s", "lng_of", "Boston, MA"],
         ]
     };
 
