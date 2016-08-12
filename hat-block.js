@@ -39,7 +39,9 @@
     // Function called for the "stop repeating" block
     ext.stop_interval = function() {
       clearInterval(intervalID);
-      intervalID = null;
+      
+      // set intervalID to a valid but non-null value so that it cannot be started again
+      intervalID = -1;
     }
     
     // Block and block menu descriptions
