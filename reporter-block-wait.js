@@ -5,6 +5,9 @@
 (function(ext) {
     // API Key for Google Maps Elevation API - https://developers.google.com/maps/documentation/geocoding/start#get-a-key
     apiKey = "AIzaSyBEvrUM6Tj2kK70aVWC_qntJa8WecBcIqQ";
+    
+    // Proxy to get JSONP back from JSON request; see http://stackoverflow.com/a/19794093
+    jsonpProxy = 'https://jsonp.afeld.me/?callback=?&url=';
   
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
@@ -21,7 +24,8 @@
     ext.elevation_at = function(address, callback) {
       // Make an AJAX call to the Google Maps Geocoding API to get LAT/LONG - https://developers.google.com/maps/documentation/geocoding/start
       $.ajax({
-            url: " https://maps.googleapis.com/maps/api/geocode/json?address=" + address.replace(" ", "+") + "&key=" + apiKey,
+            url: jsonpProxy + "https://maps.googleapis.com/maps/api/geocode/json?address=" + address.replace(" ", "+") + "&key=" + apiKey,
+            dataType: 'jsonp',
             success: function( lat_long_data ) {
               // Parse data for lat/long
               var lat = lat_long_data["results"][0]["geometry"]["location"]["lat"];
@@ -58,7 +62,8 @@
     get_elevation = function(lat, lng, callback) {
       // Make a call to the Google Maps Elevation API - https://developers.google.com/maps/documentation/elevation/start
       $.ajax({
-            url: "https://maps.googleapis.com/maps/api/elevation/json?locations=" + lat + "," + lng + "&key=" + apiKey,
+            url: jsonpProxy + "https://maps.googleapis.com/maps/api/elevation/json?locations=" + lat + "," + lng + "&key=" + apiKey,
+            dataType: 'jsonp',
             success: function( elevation_data ) {
                 // After getting the data, parse and return it
                 var elevation = elevation_data["results"][0]["elevation"];
