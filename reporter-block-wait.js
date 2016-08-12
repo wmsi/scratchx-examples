@@ -22,7 +22,7 @@
       // Make an AJAX call to the Google Maps Geocoding API to get LAT/LONG - https://developers.google.com/maps/documentation/geocoding/start
       $.ajax({
             url: " https://maps.googleapis.com/maps/api/geocode/json?address=" + address.replace(" ", "+") + "&key=" + apiKey,
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function( lat_long_data ) {
               // Parse data for lat/long
               var lat = lat_long_data["results"][0]["geometry"]["location"]["lat"];
@@ -60,7 +60,7 @@
       // Make a call to the Google Maps Elevation API - https://developers.google.com/maps/documentation/elevation/start
       $.ajax({
             url: "https://maps.googleapis.com/maps/api/elevation/json?locations=" + lat + "," + lng + "&key=" + apiKey,
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function( elevation_data ) {
                 // After getting the data, parse and return it
                 var elevation = elevation_data["results"][0]["elevation"];
