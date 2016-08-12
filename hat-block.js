@@ -21,11 +21,9 @@
     // Function called for the "every n secs do" block
     // The first argument is the number entered in the block's input field
     ext.every_interval = function(interval) {
-      if (intervalID == null) {
         intervalID = setInterval(function() {
           activateHat = true;
         }, interval*1000);
-      }
       
       // Run the hat block if we've hit an interval
       if (activateHat) {
@@ -39,9 +37,7 @@
     // Function called for the "stop repeating" block
     ext.stop_interval = function() {
       clearInterval(intervalID);
-      
-      // set intervalID to a valid but non-null value so that it cannot be started again
-      intervalID = -1;
+      intervalID = null;
     }
     
     // Block and block menu descriptions
