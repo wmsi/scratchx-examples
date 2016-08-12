@@ -30,7 +30,7 @@
           // Block type, block name, function name, default parameter
           // The "%s" represents a string input field in the block
           // The fourth argument in this array is the default value in that input field
-          ["w", "title case of %s", "title_case", "hello, world"],
+          ["r", "title case of %s", "title_case", "hello, world"],
         ]
     };
 
