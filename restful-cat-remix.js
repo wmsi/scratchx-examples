@@ -21,6 +21,7 @@
     
     ext.open_request = function(method, link) {
         request = new XMLHttpRequest();
+        formdata = new FormData();
         request.open(method, link);
         console.log('Request opened with method ' + method + ' and with the link ' + link);
     }
