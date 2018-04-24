@@ -20,6 +20,7 @@
     };
     
     ext.open_request = function(method, link) {
+        request = new XMLHttpRequest();
         request.open(method, link);
         console.log('Request opened with method ' + method + ' and with the link ' + link);
     }
