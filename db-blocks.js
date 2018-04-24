@@ -13,15 +13,11 @@
     };
 
     ext.append_formdata = function(element_name, element_value) {
-        console.log('appending ' + element_name + ' with value ' + element_value);
         if(!formdata) {
             alert('You must open a request before you can add elements');
             return;
-        } else {
-            alert("adding formdata");
         }
-        try {   formdata.append(element_name, element_value);
-        } catch (error) {   console.log("caught: " + error.message);    }
+        formdata.append(element_name, element_value);
         console.log('Element ' + element_name + ' has been added with the value ' + element_value);
     };
     
@@ -57,6 +53,7 @@
     ext.post_data = function(project_id, data_type, value) {
         console.log('new data post');   
         this.open_request('POST', DEFAULT_POST);
+        request.setRequestHeader('Origin', 'scratchx')
         this.append_formdata('project_id', String(project_id));
         this.append_formdata('data_type', String(data_type));
         this.append_formdata('value', String(value));
