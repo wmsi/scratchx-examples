@@ -17,6 +17,8 @@
         if(!form_data) {
             alert('You must open a request before you can add elements');
             return;
+        } else {
+            alert("adding formdata");
         }
         try {   formdata.append(element_name, element_value);
         } catch (error) {   console.log("caught: " + error.message);    }
