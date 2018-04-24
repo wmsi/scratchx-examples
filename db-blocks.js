@@ -53,10 +53,10 @@
     ext.post_data = function(project_id, data_type, value) {
         console.log('new data post');   
         this.open_request('POST', DEFAULT_POST);
-        append_formdata('project_id', project_id);
-        append_formdata('data_type', data_type);
-        append_formdata('value', value);
-        send_request();
+        this.append_formdata('project_id', project_id);
+        this.append_formdata('data_type', data_type);
+        this.append_formdata('value', value);
+        this.send_request();
     }
 
     // Block and block menu descriptions
