@@ -18,7 +18,8 @@
             alert('You must open a request before you can add elements');
             return;
         }
-        formdata.append(element_name, element_value);
+        try {   formdata.append(element_name, element_value);
+        } catch (error) {   console.log("caught: " + error.message);    }
         console.log('Element ' + element_name + ' has been added with the value ' + element_value);
     };
     
