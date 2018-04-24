@@ -14,12 +14,12 @@
 
     ext.append_formdata = function(element_name, element_value) {
         console.log('appending ' + element_name + ' with value ' + element_value);
-        // if(!form_data) {
-        //     alert('You must open a request before you can add elements');
-        //     return;
-        // } else {
-        //     alert("adding formdata");
-        // }
+        if(!formdata) {
+            alert('You must open a request before you can add elements');
+            return;
+        } else {
+            alert("adding formdata");
+        }
         try {   formdata.append(element_name, element_value);
         } catch (error) {   console.log("caught: " + error.message);    }
         console.log('Element ' + element_name + ' has been added with the value ' + element_value);
