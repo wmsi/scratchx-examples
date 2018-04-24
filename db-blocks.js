@@ -51,8 +51,8 @@
     }
 
     ext.post_data = function(project_id, data_type, value) {
-        console.log('new data post');
-        ext.open_request('POST', DEFAULT_POST);
+        console.log('new data post');   
+        this.open_request('POST', DEFAULT_POST);
         append_formdata('project_id', project_id);
         append_formdata('data_type', data_type);
         append_formdata('value', value);
