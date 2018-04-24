@@ -13,6 +13,7 @@
     };
 
     ext.append_formdata = function(element_name, element_value) {
+        console.log('appending ' + element_name + ' with value ' + element_value);
         if(!form_data) {
             alert('You must open a request before you can add elements');
             return;
