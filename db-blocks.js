@@ -5,7 +5,7 @@
     var formdata;
     var request;
     var DEFAULT_URL = 'https://wmsinh.org/scratchx';
-    var data_set = 
+    var data_set;
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
@@ -69,7 +69,8 @@
         $.ajax({
             url: query_string,
             dataType: 'json',
-            success: function( data_set ) {
+            success: function( pull_data ) {
+                data_set = pull_data;
                 var data_length = data_set.length;
                 response_string = JSON.stringify(data_set);
                 if (!window.localStorage) {
@@ -89,6 +90,15 @@
 
     ext.get_data_string = function() {
         get_local_var('dataset');
+    }
+
+    ext.get_data_element = function(index) {
+        if(dataset[index]) {
+            return data_set[index];
+        } else {
+            alert("couldn't find that index. make sure your dataset is defined");
+            return 0;
+        }
     }
 
     get_local_var = function(var_name) {
@@ -122,7 +132,8 @@
             [' ', 'post data to project %n with data_type %s and value %n', 'post_data', '0', 'tempC', '25'],
             ['R', 'pull data from project %n with data_type %s', 'pull_data', '0', 'tempC'],
             ['r', 'data set length', 'get_data_length'],
-            ['r', 'data set string', 'get_data_string']
+            ['r', 'data set string', 'get_data_string'],
+            ['r', 'item %n of data set', 'get_data_element', '0']
             // [' ', 'add request header (beta) %s %s', 'add_request_header', 'header name', 'header value']
         ],
         menus:{
