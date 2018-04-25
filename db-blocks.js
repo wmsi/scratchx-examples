@@ -85,11 +85,11 @@
     }
 
     ext.get_data_length = function() {
-        get_local_var('data_length');
+        return get_local_var('data_length');
     }
 
     ext.get_data_string = function() {
-        get_local_var('data_set');
+        return get_local_var('data_set');
     }
 
     ext.get_data_element = function(index) {
@@ -101,7 +101,7 @@
         }
     }
 
-    get_local_var = function(var_name) {
+    var get_local_var = function(var_name) {
         if (localStorage.getItem(var_name)) {
             console.log("Local variables supported, variable " + var_name + " has a value of " + localStorage.getItem(var_name));
             return localStorage.getItem(var_name);
