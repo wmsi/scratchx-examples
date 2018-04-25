@@ -93,7 +93,7 @@
                 response_string = JSON.stringify(data_set)
             }
         });
-    })  
+    } 
 
     // Block and block menu descriptions
     var descriptor = {
