@@ -89,7 +89,7 @@
     }
 
     ext.get_data_string = function() {
-        get_local_var('dataset');
+        get_local_var('data_set');
     }
 
     ext.get_data_element = function(index) {
