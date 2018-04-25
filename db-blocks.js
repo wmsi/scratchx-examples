@@ -93,7 +93,7 @@
     }
 
     ext.get_data_element = function(index) {
-        if(dataset[index]) {
+        if(data_set[index]) {
             return data_set[index];
         } else {
             alert("couldn't find that index. make sure your dataset is defined and check its length");
@@ -103,10 +103,10 @@
 
     var get_local_var = function(var_name) {
         if (localStorage.getItem(var_name)) {
-            console.log("Local variables supported, variable " + var_name + " has a value of " + localStorage.getItem(var_name));
+            // console.log("Local variables supported, variable " + var_name + " has a value of " + localStorage.getItem(var_name));
             return localStorage.getItem(var_name);
         } else {
-            console.log("Variable " + var_name + " does not exist. ;(")
+            // console.log("Variable " + var_name + " does not exist. ;(")
         }
     }
 
