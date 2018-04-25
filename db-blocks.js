@@ -70,28 +70,42 @@
             url: query_string,
             dataType: 'json',
             success: function( data_set ) {
-                alert("here's the data set " + JSON.stringify(data_set));
+                var data_length = data_set.length;
                 response_string = JSON.stringify(data_set);
+                if (!window.localStorage) {
+                    alert ('LocalStorage not supported by your browser!');
+                } else {
+                    localStorage.setItem(dataset, response_string);
+                    localStorage.setItem(data_length, data_length);
+                }
                 callback(response_string);
             }
         });
+    }
 
-        // get_data(query_string, callback);
-        if (!window.localStorage) {
-            alert ('LocalStorage not supported by your browser!');
-            return;
+    ext.get_data_length = function() {
+        get_local_var('data_length');
+    }
+
+    ext.get_data_string = function() {
+        get_local_var('dataset');
+    }
+
+    get_local_var = function(var_name) {
+        if (localStorage.getItem(var_name)) {
+            console.log("Local variables supported, variable " + var_name + " has a value of " + localStorage.getItem(var_name)));
+            return localStorage.getItem(var_name);
+        } else {
+            console.log("Variable " + var_name + " does not exist. ;(")
         }
-        return localStorage.setItem(dataset, response_string)
     }
 
     get_data = function(query_string, callback) {
-
         // ajax for response
         $.ajax({
             url: query_string,
             dataType: 'json',
             success: function( data_set ) {
-                alert("here's the data set " + JSON.stringify(data_set));
                 response_string = JSON.stringify(data_set);
                 callback(response_string);
             }
@@ -106,7 +120,9 @@
             [' ', 'open request %m.method %s', 'open_request', 'POST', DEFAULT_URL],
             [' ', 'send request', 'send_request'],
             [' ', 'post data to project %n with data_type %s and value %n', 'post_data', '0', 'tempC', '25'],
-            ['R', 'pull data from project %n with data_type %s', 'pull_data', '0', 'tempC', 'data']
+            ['R', 'pull data from project %n with data_type %s', 'pull_data', '0', 'tempC'],
+            ['r', 'data set length', 'get_data_length'],
+            ['r', 'data set string', 'get_data_string']
             // [' ', 'add request header (beta) %s %s', 'add_request_header', 'header name', 'header value']
         ],
         menus:{
