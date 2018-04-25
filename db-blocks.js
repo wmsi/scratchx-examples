@@ -4,7 +4,8 @@
 
     var formdata;
     var request;
-    var DEFAULT_POST = 'https://wmsinh.org/scratchx';
+    var DEFAULT_URL = 'https://wmsinh.org/scratchx';
+    var data_set = 
 
     // Status reporting code
     // Use this to report missing hardware, plugin or unsupported browser
@@ -52,7 +53,7 @@
 
     ext.post_data = function(project_id, data_type, value) {
         console.log('new data post');   
-        this.open_request('POST', DEFAULT_POST);
+        this.open_request('POST', DEFAULT_URL);
         request.setRequestHeader('Origin', 'scratchx')
         this.append_formdata('project_id', String(project_id));
         this.append_formdata('data_type', String(data_type));
@@ -60,14 +61,49 @@
         this.send_request();
     }
 
+    ext.pull_data = function(project_id, data_type) {
+        console.log('new data pull')
+        var query_string = DEFAULT_URL + '?project_id=' + project_id + '&data_type=' + data_type;
+        var response_string;
+        // ajax for response
+        $.ajax({
+            url: "https://wmsi.github.io/scratchx-examples/reporter-block-wait.js",
+            dataType: 'jsonp',
+            success: function( data_set ) {
+                response_string = JSON.stringify(data_set);
+                callback(repsonse_string);
+            }
+        });
+
+        // get_data(query_string, callback);
+        if (!window.localStorage) {
+            alert ('LocalStorage not supported by your browser!');
+            return;
+        }
+        return localStorage.setItem(dataset, response_string)
+    }
+
+    get_data = function(query_string,callback) {
+
+        // ajax for response
+        $.ajax({
+            url: "https://wmsi.github.io/scratchx-examples/reporter-block-wait.js",
+            dataType: 'jsonp',
+            success: function( data_set ) {
+                response_string = JSON.stringify(data_set)
+            }
+        })
+    })  
+
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
             // Block type, block name, function name
             [' ', 'add element %s %s', 'append_formdata', 'element name', 'element value'],
-            [' ', 'open request %m.method %s', 'open_request', 'POST', DEFAULT_POST],
+            [' ', 'open request %m.method %s', 'open_request', 'POST', DEFAULT_URL],
             [' ', 'send request', 'send_request'],
-            [' ', 'post data to project %n with data_type %s and value %n', 'post_data', '0', 'tempC', '25']
+            [' ', 'post data to project %n with data_type %s and value %n', 'post_data', '0', 'tempC', '25'],
+            ['R', 'pull data from project %n with data_type %s', 'pull_data', '0', 'tempC', 'data']
             // [' ', 'add request header (beta) %s %s', 'add_request_header', 'header name', 'header value']
         ],
         menus:{
