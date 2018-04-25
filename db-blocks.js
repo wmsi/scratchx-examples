@@ -61,17 +61,17 @@
         this.send_request();
     }
 
-    ext.pull_data = function(project_id, data_type) {
+    ext.pull_data = function(project_id, data_type, callback) {
         console.log('new data pull')
         var query_string = DEFAULT_URL + '?project_id=' + project_id + '&data_type=' + data_type;
         var response_string;
         // ajax for response
         $.ajax({
-            url: "https://wmsi.github.io/scratchx-examples/reporter-block-wait.js",
+            url: query_string,
             dataType: 'jsonp',
             success: function( data_set ) {
                 response_string = JSON.stringify(data_set);
-                callback(repsonse_string);
+                callback(response_string);
             }
         });
 
@@ -83,14 +83,15 @@
         return localStorage.setItem(dataset, response_string)
     }
 
-    get_data = function(query_string,callback) {
+    get_data = function(query_string, callback) {
 
         // ajax for response
         $.ajax({
-            url: "https://wmsi.github.io/scratchx-examples/reporter-block-wait.js",
+            url: query_string,
             dataType: 'jsonp',
             success: function( data_set ) {
-                response_string = JSON.stringify(data_set)
+                response_string = JSON.stringify(data_set);
+                callback(response_string);
             }
         });
     } 
