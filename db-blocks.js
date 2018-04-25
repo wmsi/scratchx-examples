@@ -68,8 +68,9 @@
         // ajax for response
         $.ajax({
             url: query_string,
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function( data_set ) {
+                alert("here's the data set " + JSON.stringify(data_set));
                 response_string = JSON.stringify(data_set);
                 callback(response_string);
             }
@@ -88,8 +89,9 @@
         // ajax for response
         $.ajax({
             url: query_string,
-            dataType: 'jsonp',
+            dataType: 'json',
             success: function( data_set ) {
+                alert("here's the data set " + JSON.stringify(data_set));
                 response_string = JSON.stringify(data_set);
                 callback(response_string);
             }
