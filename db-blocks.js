@@ -92,7 +92,7 @@
             success: function( data_set ) {
                 response_string = JSON.stringify(data_set)
             }
-        })
+        });
     })  
 
     // Block and block menu descriptions
