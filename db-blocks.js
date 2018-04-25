@@ -103,7 +103,7 @@
 
     get_local_var = function(var_name) {
         if (localStorage.getItem(var_name)) {
-            console.log("Local variables supported, variable " + var_name + " has a value of " + localStorage.getItem(var_name)));
+            console.log("Local variables supported, variable " + var_name + " has a value of " + localStorage.getItem(var_name));
             return localStorage.getItem(var_name);
         } else {
             console.log("Variable " + var_name + " does not exist. ;(")
