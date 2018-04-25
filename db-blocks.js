@@ -61,7 +61,7 @@
         this.send_request();
     }
 
-    ext.pull_data = function(project_id, data_type, callback) {
+    ext.pull_data = function(project_id, data_type) {
         console.log('new data pull')
         var query_string = DEFAULT_URL + '?project_id=' + project_id + '&data_type=' + data_type;
         var response_string;
@@ -79,7 +79,7 @@
                     localStorage.setItem("data_set", response_string);
                     localStorage.setItem("data_length", data_length);
                 }
-                callback(response_string);
+                // callback(response_string);
             }
         });
     }
@@ -96,7 +96,7 @@
         if(dataset[index]) {
             return data_set[index];
         } else {
-            alert("couldn't find that index. make sure your dataset is defined");
+            alert("couldn't find that index. make sure your dataset is defined and check its length");
             return 0;
         }
     }
