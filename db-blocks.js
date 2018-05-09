@@ -126,9 +126,9 @@
     var descriptor = {
         blocks: [
             // Block type, block name, function name
-            [' ', 'add element %s %s', 'append_formdata', 'element name', 'element value'],
-            [' ', 'open request %m.method %s', 'open_request', 'POST', DEFAULT_URL],
-            [' ', 'send request', 'send_request'],
+            // [' ', 'add element %s %s', 'append_formdata', 'element name', 'element value'],
+            // [' ', 'open request %m.method %s', 'open_request', 'POST', DEFAULT_URL],
+            // [' ', 'send request', 'send_request'],
             [' ', 'post data to project %n with data_type %s and value %n', 'post_data', '0', 'tempC', '25'],
             [' ', 'pull data from project %n with data_type %s', 'pull_data', '0', 'tempC'],
             ['r', 'data set length', 'get_data_length'],
