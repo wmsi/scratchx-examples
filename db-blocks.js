@@ -56,7 +56,7 @@
         this.open_request('POST', DEFAULT_URL);
         request.setRequestHeader('Origin', 'scratchx')
         this.append_formdata('project_id', String(project_id));
-        // this.append_formdata('sensor_id', String(sensor_id));
+        this.append_formdata('sensor_id', '0');
         this.append_formdata('data_type', String(data_type));
         this.append_formdata('value', String(value));
         this.send_request();
