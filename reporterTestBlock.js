@@ -54,4 +54,8 @@
 
     // Register the extension
     ScratchExtensions.register('Title Case', descriptor, ext);
+    
+  updateISSLocation();
+  var poller = setInterval(updateISSLocation, 2000);
+    
 })({});
