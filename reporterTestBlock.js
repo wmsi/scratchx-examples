@@ -15,15 +15,16 @@
     // Function called for "title case of" block
     // The first argument is the string entered in the block's input field
     ext.title_case = function(text) {
-      //var request = new XMLHttpRequest();
-      //request.open('GET', wmsinh.org);
-      //request.responseType = 'text';
-      result = "Bob";
+      var request = new XMLHttpRequest();
+      request.open('GET', wmsinh.org);
+      request.responseType = 'text';
+      result = "";
         
       //request.onload = function() {
-        //result = request.response;
+      
       //};
-        //request.send();
+      request.send();
+      result = request.response;
       console.log('request sent...I think');  
       // remove trailing space
       return result;
