@@ -42,6 +42,13 @@
       return result;
     }
     
+    ext._shutdown = function() {
+        if (poller) {
+         clearInterval(poller);
+         poller = null;
+    }
+  };
+    
     // Block and block menu descriptions
     var descriptor = {
         blocks: [
