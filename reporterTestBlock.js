@@ -12,19 +12,26 @@
         return {status: 2, msg: 'Ready'};
     };
   
+    function updateISSLocation() {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      //url: "http://api.open-notify.org/iss-now.json",
+      url: "https://api.wheretheiss.at/v1/satellites/25544",
+      success: function(data) {
+        issData = data;
+      },
+      error: function(jqxhr, textStatus, error) {
+        console.log("Error downloading ISS data");
+      }
+    });
+  }
+    
+    
     // Function called for "title case of" block
     // The first argument is the string entered in the block's input field
     ext.title_case = function(text) {
-      var request = new XMLHttpRequest();
-      request.open('GET', wmsinh.org);
-      request.responseType = 'text';
-      result = "";
-        
-      //request.onload = function() {
-      
-      //};
-      request.send();
-      result = request.response;
+      result = issData.name
       console.log('request sent...I think, really.  I do.');  
       // remove trailing space
       return result;
