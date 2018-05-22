@@ -15,13 +15,18 @@
     // Function called for "title case of" block
     // The first argument is the string entered in the block's input field
     ext.title_case = function(text) {
-      words = text.split(" ");
+      var request = new XMLHttpRequest();
+      request.open('GET', url);
+      request.responseType = 'text';
       result = "";
-      for (var i in words) {
-        result += words[i].charAt(0).toUpperCase() + words[i].slice(1) + " ";
-      }
+        
+      request.onload = function() {
+        result = request.response;
+      };
+        request.send();
+        
       // remove trailing space
-      return result.trim();
+      return result;
     }
     
     // Block and block menu descriptions
