@@ -25,7 +25,7 @@
       //};
       request.send();
       result = request.response;
-      console.log('request sent...I think');  
+      console.log('request sent...I think, really.  I do.');  
       // remove trailing space
       return result;
     }
