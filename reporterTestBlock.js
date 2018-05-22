@@ -24,7 +24,7 @@
         result = request.response;
       };
         request.send();
-        
+      console.log('request sent...I think');  
       // remove trailing space
       return result;
     }
