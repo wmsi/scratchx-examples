@@ -18,7 +18,7 @@
       var request = new XMLHttpRequest();
       request.open('GET', wmsinh.org);
       request.responseType = 'text';
-      result = "";
+      result = "Bob";
         
       request.onload = function() {
         result = request.response;
