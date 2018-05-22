@@ -20,6 +20,7 @@
       url: "https://api.wheretheiss.at/v1/satellites/25544",
       success: function(data) {
         issData = data;
+        console.log("Got it");
       },
       error: function(jqxhr, textStatus, error) {
         console.log("Error downloading ISS data");
@@ -31,6 +32,7 @@
     // Function called for "title case of" block
     // The first argument is the string entered in the block's input field
     ext.title_case = function(text) {
+      result = "";
       result = issData.name
       console.log('request sent...I think, really.  I do.');  
       // remove trailing space
