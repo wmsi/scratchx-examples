@@ -16,7 +16,7 @@
     // The first argument is the string entered in the block's input field
     ext.title_case = function(text) {
       var request = new XMLHttpRequest();
-      request.open('GET', url);
+      request.open('GET', wmsinh.org);
       request.responseType = 'text';
       result = "";
         
