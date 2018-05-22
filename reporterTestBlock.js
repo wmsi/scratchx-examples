@@ -3,6 +3,9 @@
 // Based off the ScratchX documentation: https://github.com/LLK/scratchx/wiki
 
 (function(ext) {
+    
+    var issData = null;
+    
     // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
