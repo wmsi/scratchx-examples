@@ -37,7 +37,7 @@
     ext.title_case = function(text) {
       result = "";
       result = issData
-      console.log('request sent...I think, really.  I do.');  
+      console.log('Temp Request Sent.');  
       // remove trailing space
       return result;
     }
