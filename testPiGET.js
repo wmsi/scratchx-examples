@@ -26,7 +26,7 @@
         console.log("Got it");
       },
       error: function(jqxhr, textStatus, error) {
-        console.log("Error downloading ISS data");
+        console.log("Error downloading temp data");
       }
     });
   }
