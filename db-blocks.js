@@ -60,7 +60,13 @@
         this.append_formdata('sensor_id', '0');
         this.append_formdata('data_type', String(data_type));
         this.append_formdata('value', String(value));
+        request.onreadystatechange = function() {
+        if (request.readyState == XMLHttpRequest.DONE) {
+                alert(request.responseText);
+            }
+        }
         this.send_request();
+
         if (!window.localStorage) {
             alert ('LocalStorage not supported by your browser!');
         } else {
