@@ -4,7 +4,7 @@
 
     var formdata;
     var request;
-    var status;
+    var status = 0;
     var response_text;
     var DEFAULT_URL = 'https://wmsinh.org/scratchx';
     var data_set;
@@ -63,7 +63,8 @@
             }
         }
         var post_data = new FormData();
-        
+        status = 0;
+
         xhr.open('POST', DEFAULT_URL);
         // this.open_request('POST', DEFAULT_URL);
         xhr.setRequestHeader('*', 'scratchx');
@@ -123,6 +124,10 @@
         });
     }
 
+    ext.get_status = function() {
+        return status;
+    }
+
     ext.get_data_length = function() {
         return get_local_var('data_length');
     }
@@ -173,7 +178,8 @@
             [' ', 'pull data from project %n with data_type %s', 'pull_data', '0', 'loudness'],
             ['r', 'data set length', 'get_data_length'],
             ['r', 'data set string', 'get_data_string'],
-            ['r', 'item %n of data set', 'get_data_element', '0']
+            ['r', 'item %n of data set', 'get_data_element', '0'],
+            ['r', 'Post Status', 'get_status']
             // [' ', 'add request header (beta) %s %s', 'add_request_header', 'header name', 'header value']
         ],
         menus:{
