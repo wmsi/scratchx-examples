@@ -49,21 +49,22 @@
             alert('You must open a request before you can add headers to it');
             return;
         }
-        request.setRequestHeader(header_name, header_value)
-        console.log('Added request header with a name of ' + header_name + ' and a value of ' + header_value)
+        request.setRequestHeader(header_name, header_value);
+        console.log('Added request header with a name of ' + header_name + ' and a value of ' + header_value);
     }
 
     ext.post_data = function(project_id, data_type, value) {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
-                alert(xhr.responseText);
+                console.log('DONE', xhr.status);
                 status = xhr.status;
                 response_text = xhr.responseText;
             }
         }
         var post_data = new FormData();
-        status = 0;
+        console.log('UNSENT', xhr.status);
+        status = xhr.status;
 
         console.log('Open new request');
         xhr.open('POST', DEFAULT_URL);
