@@ -20,7 +20,7 @@
       type: "GET",
       dataType: "text",
       //url:
-      url: "http://192.168.2.239:5000",
+      url: "http://192.168.1.32:5000",
       success: function(data) {
         issData = data;
         console.log("Got it");
