@@ -130,6 +130,10 @@
         return status;
     }
 
+    ext.get_timestamp = function() {
+        return response_text;
+    }
+
     ext.get_data_length = function() {
         return get_local_var('data_length');
     }
@@ -181,7 +185,8 @@
             ['r', 'data set length', 'get_data_length'],
             ['r', 'data set string', 'get_data_string'],
             ['r', 'item %n of data set', 'get_data_element', '0'],
-            ['r', 'Post Status', 'get_status']
+            ['r', 'Post Status', 'get_status'],
+            ['r', 'Last Timestamp', 'get_timestamp']
             // [' ', 'add request header (beta) %s %s', 'add_request_header', 'header name', 'header value']
         ],
         menus:{
