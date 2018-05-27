@@ -64,7 +64,7 @@
         if (!window.localStorage) {
             alert ('LocalStorage not supported by your browser!');
         } else {
-            alert (request.response);
+            alert (request.status);
             // localStorage.setItem("data_set", response_string);
         }
     }
