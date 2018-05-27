@@ -57,7 +57,7 @@
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
-                alert(request.responseText);
+                alert(xhr.responseText);
                 status = xhr.status;
                 response_text = xhr.responseText;
             }
