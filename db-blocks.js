@@ -65,6 +65,7 @@
         var post_data = new FormData();
         status = 0;
 
+        console.log('Open new request');
         xhr.open('POST', DEFAULT_URL);
         // this.open_request('POST', DEFAULT_URL);
         xhr.setRequestHeader('*', 'scratchx');
