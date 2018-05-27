@@ -4,6 +4,8 @@
 
     var formdata;
     var request;
+    var status;
+    var response_text;
     var DEFAULT_URL = 'https://wmsinh.org/scratchx';
     var data_set;
 
@@ -56,12 +58,15 @@
         xhr.onreadystatechange = function() {
         if (xhr.readyState == XMLHttpRequest.DONE) {
                 alert(request.responseText);
+                status = xhr.status;
+                response_text = xhr.responseText;
             }
         }
         var post_data = new FormData();
+        
         xhr.open('POST', DEFAULT_URL);
         // this.open_request('POST', DEFAULT_URL);
-        request.setRequestHeader('*', 'scratchx');
+        xhr.setRequestHeader('*', 'scratchx');
         post_data.append('project_id', String(project_id));
         // this.append_formdata('sensor_id', String(sensor_id));
         post_data.append('sensor_id', '0');
