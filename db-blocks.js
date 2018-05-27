@@ -52,28 +52,48 @@
     }
 
     ext.post_data = function(project_id, data_type, value) {
-        console.log('new data post');   
-        this.open_request('POST', DEFAULT_URL);
-        request.setRequestHeader('Origin', 'scratchx')
-        this.append_formdata('project_id', String(project_id));
-        // this.append_formdata('sensor_id', String(sensor_id));
-        this.append_formdata('sensor_id', '0');
-        this.append_formdata('data_type', String(data_type));
-        this.append_formdata('value', String(value));
-        request.onreadystatechange = function() {
-        if (request.readyState == XMLHttpRequest.DONE) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState == XMLHttpRequest.DONE) {
                 alert(request.responseText);
             }
         }
-        this.send_request();
-
-        if (!window.localStorage) {
-            alert ('LocalStorage not supported by your browser!');
-        } else {
-            alert (request.status);
-            // localStorage.setItem("data_set", response_string);
-        }
+        var post_data = new FormData();
+        xhr.open('POST', DEFAULT_URL);
+        // this.open_request('POST', DEFAULT_URL);
+        request.setRequestHeader('*', 'scratchx');
+        post_data.append('project_id', String(project_id));
+        // this.append_formdata('sensor_id', String(sensor_id));
+        post_data.append('sensor_id', '0');
+        post_data.append('data_type', String(data_type));
+        post_data.append('value', String(value));
+        xhr.send(post_data);
+        console.log('Sent POST: ' + post_data);
     }
+
+    // ext.post_data = function(project_id, data_type, value) {
+    //     console.log('new data post');   
+    //     this.open_request('POST', DEFAULT_URL);
+    //     request.setRequestHeader('*', 'scratchx');
+    //     this.append_formdata('project_id', String(project_id));
+    //     // this.append_formdata('sensor_id', String(sensor_id));
+    //     this.append_formdata('sensor_id', '0');
+    //     this.append_formdata('data_type', String(data_type));
+    //     this.append_formdata('value', String(value));
+    //     request.onreadystatechange = function() {
+    //     if (request.readyState == XMLHttpRequest.DONE) {
+    //             alert(request.responseText);
+    //         }
+    //     }
+    //     this.send_request();
+
+    //     if (!window.localStorage) {
+    //         alert ('LocalStorage not supported by your browser!');
+    //     } else {
+    //         alert (request.status);
+    //         // localStorage.setItem("data_set", response_string);
+    //     }
+    // }
 
     ext.pull_data = function(project_id, data_type) {
         console.log('new data pull')
