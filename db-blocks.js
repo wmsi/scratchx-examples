@@ -56,6 +56,7 @@
         this.open_request('POST', DEFAULT_URL);
         request.setRequestHeader('Origin', 'scratchx')
         this.append_formdata('project_id', String(project_id));
+        // this.append_formdata('sensor_id', String(sensor_id));
         this.append_formdata('sensor_id', '0');
         this.append_formdata('data_type', String(data_type));
         this.append_formdata('value', String(value));
@@ -137,7 +138,7 @@
             // [' ', 'open request %m.method %s', 'open_request', 'POST', DEFAULT_URL],
             // [' ', 'send request', 'send_request'],
             // [' ', 'post data to project %n with sensor id %n and data_type %s and value %n', 'post_data', '0', '0', 'tempC', '25'],
-            [' ', 'post data to project: %n and sensor_id: %n with data_type: %s and value: %n', 'post_data', '0', '0', 'loudness', '25'],
+            [' ', 'post data to project: %n with data_type: %s and value: %n', 'post_data', '0', 'loudness', '25'],
             [' ', 'pull data from project %n with data_type %s', 'pull_data', '0', 'loudness'],
             ['r', 'data set length', 'get_data_length'],
             ['r', 'data set string', 'get_data_string'],
