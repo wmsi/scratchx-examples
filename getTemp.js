@@ -20,7 +20,7 @@
       type: "GET",
       dataType: "text",
       //url:
-      url: "http://zero:5000",
+      url: "http://zero.local:5000",
       success: function(data) {
         issData = data;
         console.log("Got it");
